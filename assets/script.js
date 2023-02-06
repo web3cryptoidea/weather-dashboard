@@ -1,19 +1,26 @@
  
 var apiKey = "79ed2eddbec624b551c57e8e4cbb641f";
 
-// function fivedaysforecast(response) {
+function fivedaysforecast(response) {
         
-    // for (var i=0; i<=response.list.length; i=i+7){
-    //     console.log(response.list[i]);
-    //     var card = $('div');
-    //     card.addClass('card');
-    //     // var cityInfo = $('p').text(response.city.name + ": " + response.list[i].dt_txt);
-    //     // card.append($('p').text(response.city.name + ": " + response.list[i].dt_txt));
-    //     // card.append(cityInfo);
-    //     // $('#forecast').append(card);
+    for (var i=6; i<=response.list.length; i=i+7){
+        console.log(response.list[i]);
+        var card = $('<div>');
+        card.addClass('card');
+
+        var cityInfo = $(`<p>${response.city.name + ": " + response.list[i].dt_txt}</p>`);
+        var tempInfo = $(`<p>${"Temperature: " + response.list[i].main.temp}</p>`); 
+        var humInfo = $(`<p>${"Humidity: " + response.list[i].main.humidity}</p>`);
+        var windInfo = $(`<p>${"Wind: " + response.list[i].wind.speed}</p>`);
         
-    // }
-// }
+        card.append(cityInfo);
+        card.append(tempInfo);
+        card.append(humInfo);
+        card.append(windInfo);
+        $('#forecast').append(card);
+        
+    }
+}
 // $(document).ready(function() {
      
     $("#search-button").click(function(event) {
@@ -47,17 +54,7 @@ var apiKey = "79ed2eddbec624b551c57e8e4cbb641f";
                 $("#humidity").text("Humidity: " + response.list[0].main.humidity);
                 $("#wind").text("Wind: " + response.list[0].wind.speed + " m/s");
                 
-                // for (var i=0; i<=response.list.length; i=i+7){
-                //     console.log(response.list[i]);
-                //     var card = $('div');
-                //     card.addClass('card');
-                //     // var cityInfo = $('p').text(response.city.name + ": " + response.list[i].dt_txt);
-                //     // card.append($('p').text(response.city.name + ": " + response.list[i].dt_txt));
-                //     // card.append(cityInfo);
-                //     // $('#forecast').append(card);
-                    
-                // }
-                // // fivedaysforecast(response);
+                fivedaysforecast(response);
             });
         });
     });
@@ -95,6 +92,5 @@ var apiKey = "79ed2eddbec624b551c57e8e4cbb641f";
         });
        
     });
-// });
  
  
