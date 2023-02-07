@@ -12,7 +12,7 @@ function fivedaysforecast(response) {
         card.addClass('card');
 
         var cityInfo = $(`<p>${response.list[i].dt_txt.substring(0, 10)}</p>`);
-        var iconUrl = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + "@2x.png");
+        var iconUrl = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + "@2x.png");
         var tempInfo = $(`<p>${"Temp.: " + response.list[i].main.temp + "C°"}</p>`); 
         var humInfo = $(`<p>${"Humidity: " + response.list[i].main.humidity + "%"}</p>`);
         var windInfo = $(`<p>${"Wind: " + response.list[i].wind.speed + "mph"}</p>`);
@@ -30,7 +30,7 @@ function fivedaysforecast(response) {
     $("#search-button").click(function(event) {
         event.preventDefault();
         let city = $("#search-input").val().trim();
-        var queryURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey;
+        var queryURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey;
 
         $.ajax({
             url: queryURL,
@@ -52,7 +52,7 @@ function fivedaysforecast(response) {
                 $("#nameofCity").text(city + ": " + response.list[0].dt_txt.substring(0, 10));
                 $("#temperature").text("Temp.: " + response.list[0].main.temp + "C°");
                  
-                let iconUrl = "http://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + "@2x.png";
+                let iconUrl = "https://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + "@2x.png";
                  
                 $("#weather-icon").attr("src", iconUrl);
                 $("#humidity").text("Humidity: " + response.list[0].main.humidity + "%");
@@ -83,7 +83,7 @@ function fivedaysforecast(response) {
     $("#city-list").on("click", ".city-btn", function(event) {
     event.preventDefault();
     let cityname = $(this).text();
-    var queryURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityname + "&limit=1&appid=" + apiKey;
+    var queryURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityname + "&limit=1&appid=" + apiKey;
 
         $.ajax({
             url: queryURL,
@@ -104,7 +104,7 @@ function fivedaysforecast(response) {
                 $("#nameofCity").text(cityname + ": " + response.list[0].dt_txt.substring(0, 10));
                 $("#temperature").text("Temp.: " + response.list[0].main.temp + "C°");
                 console.log(response.list[0].main.temp);
-                let iconUrl = "http://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + "@2x.png";
+                let iconUrl = "https://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + "@2x.png";
                 console.log(iconUrl);
                 $("#weather-icon").attr("src", iconUrl);
                 $("#humidity").text("Humidity: " + response.list[0].main.humidity + "%");
