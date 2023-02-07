@@ -1,0 +1,44 @@
+ .card {
+    margin-right: 25px;
+    padding: 15px;
+    background-color: darkblue;  
+ }
+
+  #city-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .city-btn {
+    height: 40px;
+    width: 100px;
+    background-color: lightblue;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+
+  #weather-icon {
+    width: 100px;
+    height: 100px;
+  }
+
+  #today {
+    font-size: small;
+    margin-bottom: 20px;
+    border-bottom: 1px solid  black;
+    padding-bottom: 20px;
+  }
+
+  
