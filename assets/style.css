@@ -1,8 +1,22 @@
+#jamboheader {
+  background-color: rgb(11, 11, 96) !important;
+  padding-top: 90px !important;
+  min-height: 200px !important;
+ }
+ 
+ 
+ #form-heading {
+  padding-bottom: 40px;
+ }
+ 
  .card {
     margin-right: 25px;
-    padding: 15px;
-    background-color: darkblue;  
+    padding: 20px;
+     
+    background-color: rgb(11, 11, 96) !important;  
+    color: aliceblue;
  }
+
 
   #city-list {
     display: flex;
@@ -14,9 +28,9 @@
   }
   
   .city-btn {
-    height: 40px;
-    width: 100px;
-    background-color: lightblue;
+    height: 50px;
+    width: 140px;
+    background-color: rgb(11, 11, 96);
     margin: 10px;
     border: none;
     border-radius: 5px;
@@ -38,6 +52,7 @@
     font-size: small;
     margin-bottom: 20px;
     border-bottom: 1px solid  black;
+    padding-top: 20px;
     padding-bottom: 20px;
   }
 

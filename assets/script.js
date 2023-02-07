@@ -1,6 +1,7 @@
  
 var apiKey = "79ed2eddbec624b551c57e8e4cbb641f";
 
+//function for 5 cards with next days forecast
 function fivedaysforecast(response) {
         
     for (var i=6; i<=response.list.length; i=i+7){
@@ -25,7 +26,7 @@ function fivedaysforecast(response) {
         
     }
 }
-     
+     //Main snippet of code for retriving weather data from search button
     $("#search-button").click(function(event) {
         event.preventDefault();
         let city = $("#search-input").val().trim();
@@ -36,12 +37,11 @@ function fivedaysforecast(response) {
             method: "GET"
         }).then(function(response) {
             
-            let cityname = response[0].name;
-        
+            let cityname = response[0].name;;
+         
             let lat = response[0].lat;
             let lon = response[0].lon;
-            console.log(lat);
-            console.log(lon);
+             
             var weatherURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=metric";
 
             $.ajax({
@@ -49,17 +49,17 @@ function fivedaysforecast(response) {
                 method: "GET"
             }).then(function(response) {
                  
-                $("#nameofCity").text(response.city.name + ": " + response.list[0].dt_txt.substring(0, 10));
+                $("#nameofCity").text(city + ": " + response.list[0].dt_txt.substring(0, 10));
                 $("#temperature").text("Temp.: " + response.list[0].main.temp + "C°");
-                console.log(response.list[0].main.temp);
+                 
                 let iconUrl = "http://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + "@2x.png";
-                console.log(iconUrl);
+                 
                 $("#weather-icon").attr("src", iconUrl);
                 $("#humidity").text("Humidity: " + response.list[0].main.humidity + "%");
                 $("#wind").text("Wind: " + response.list[0].wind.speed + " mph");
                 
-
                 $("#forecast").empty();
+               
                 fivedaysforecast(response);
 
                 // Add city to local storage
@@ -69,19 +69,16 @@ function fivedaysforecast(response) {
                 searchHistory = searchHistory.slice(0, 6);
                 localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
                 
-                // Append city name to the list
-                // let btn = $("<button>").text(cityname).addClass("city-btn");
-                // $("#city-list").prepend(btn);
-                
-                // Remove existing buttons and add new ones to the list
+                // Append, remove existing buttons and add new ones to the list
                 $("#city-list").html("");
-                searchHistory.forEach(function(cityname) {
-                let btn = $("<button>").text(cityname).addClass("city-btn");
+                searchHistory.forEach(function(city) {
+                let btn = $("<button>").text(city).addClass("city-btn");
                 $("#city-list").append(btn);
             });
         });
     });
 });
+    //Displaying weather from history buttons on the left
 
     $("#city-list").on("click", ".city-btn", function(event) {
     event.preventDefault();
@@ -104,7 +101,7 @@ function fivedaysforecast(response) {
                 method: "GET"
             }).then(function(response) {
                  
-                $("#nameofCity").text(response.city.name + ": " + response.list[0].dt_txt.substring(0, 10));
+                $("#nameofCity").text(cityname + ": " + response.list[0].dt_txt.substring(0, 10));
                 $("#temperature").text("Temp.: " + response.list[0].main.temp + "C°");
                 console.log(response.list[0].main.temp);
                 let iconUrl = "http://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + "@2x.png";
